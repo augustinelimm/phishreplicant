@@ -14,11 +14,23 @@ Install the required dependencies by running the following command:
 
 2. Install the required dependencies:
    ```
-   pip install -r requirements.txt
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install --upgrade pip
+
+   pip install "numpy<2"
+   pip install torch==2.9.1 torchvision==0.24.1
+   pip install sentence-transformers==2.2.2
+   pip install transformers==4.28.1
+   pip install huggingface_hub==0.14.1
+   pip install faiss-cpu==1.7.4
+   pip install tld
+   pip install validators
+   pip install publicsuffixlist
    ```
 
 
-## Quick Start
+## Quick start
 Try PhishReplicant with the sample data provided in the sample_data directory.
 ```
 python main.py --output_dir ./
@@ -36,6 +48,7 @@ To use PhishReplicant, you will need to provide input data in the form of phishi
 1. Prepare input data.
     - *Phishing domain names* collected from phishing threat intelligence such as PhishTank, etc. (e.g., sample_data/phishingti/sample.txt)
     - *Newly registered domain names* extracted from CT logs and other sources (e.g., sample_data/input_domains/sample.txt)
+    - We will test 5k CT logs + 500 phishing domains everyday. labelled under results/{date}.json
 2. Edit config.py to add file paths of the above input data.
     - phishingti_path_list: list of file paths of phishing domain names
     - new_domain_path_list: list of file paths of newly registered domain names
